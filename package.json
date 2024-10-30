@@ -6,11 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "proxy": "http://localhost:3000"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.31.6",
     "@stripe/stripe-js": "^4.9.0",
+    "cors": "^2.8.5",
     "lucide-react": "^0.453.0",
     "mongoose": "^8.7.3",
     "next": "15.0.1",

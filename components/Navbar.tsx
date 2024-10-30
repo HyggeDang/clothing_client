@@ -1,7 +1,6 @@
 "use client";
 
 import useCart from "@/lib/hooks/useCart";
-
 import { UserButton, useUser } from "@clerk/nextjs";
 import { CircleUserRound, Menu, Search, ShoppingCart } from "lucide-react";
 import Image from "next/image";
@@ -18,6 +17,10 @@ const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(false);
   const [query, setQuery] = useState("");
 
+  const handleHomeClick = () => {
+    window.location.href = "/"; // Reload trang khi nhấn Home
+  };
+
   return (
     <div className="sticky top-0 z-10 py-2 px-10 flex gap-2 justify-between items-center bg-white max-sm:px-2">
       <Link href="/">
@@ -25,27 +28,21 @@ const Navbar = () => {
       </Link>
 
       <div className="flex gap-4 text-base-bold max-lg:hidden">
-        <Link
-          href="/"
-          className={`hover:text-red-1 ${
-            pathname === "/" && "text-red-1"
-          }`}
+        <button
+          onClick={handleHomeClick}
+          className={`hover:text-red-1 ${pathname === "/" && "text-red-1"}`}
         >
           Home
-        </Link>
+        </button>
         <Link
           href={user ? "/wishlist" : "/sign-in"}
-          className={`hover:text-red-1 ${
-            pathname === "/wishlist" && "text-red-1"
-          }`}
+          className={`hover:text-red-1 ${pathname === "/wishlist" && "text-red-1"}`}
         >
           Wishlist
         </Link>
         <Link
           href={user ? "/orders" : "/sign-in"}
-          className={`hover:text-red-1 ${
-            pathname === "/orders" && "text-red-1"
-          }`}
+          className={`hover:text-red-1 ${pathname === "/orders" && "text-red-1"}`}
         >
           Orders
         </Link>
@@ -82,9 +79,9 @@ const Navbar = () => {
 
         {dropdownMenu && (
           <div className="absolute top-12 right-5 flex flex-col gap-4 p-3 rounded-lg border bg-white text-base-bold lg:hidden">
-            <Link href="/" className="hover:text-red-1">
+            <button onClick={handleHomeClick} className="hover:text-red-1">
               Home
-            </Link>
+            </button>
             <Link
               href={user ? "/wishlist" : "/sign-in"}
               className="hover:text-red-1"

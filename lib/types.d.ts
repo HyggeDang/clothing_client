@@ -9,33 +9,33 @@ type ProductType = {
   _id: string;
   title: string;
   description: string;
-  media: [string];
+  media: Array<string>;
   category: string;
-  collections: [string];
-  tags: [string];
+  collections: Array<string>;
+  tags: Array<string>;
   price: number;
   cost: number;
-  sizes: [string];
-  colors: [string];
+  sizes: Array<string>;
+  colors: Array<string>;
   createdAt: string;
   updatedAt: string;
 };
 
 type UserType = {
   clerkId: string;
-  wishlist: [string];
+  wishlist: Array<string>;
   createdAt: string;
   updatedAt: string;
 };
 
 type OrderType = {
-  shippingAddress: Object;
+  shippingAddress: Record<string, any>; // Thay đổi này cho phép linh hoạt hơn trong việc định nghĩa địa chỉ
   _id: string;
   customerClerkId: string;
-  products: [OrderItemType]
+  products: Array<OrderItemType>;
   shippingRate: string;
-  totalAmount: number
-}
+  totalAmount: number;
+};
 
 type OrderItemType = {
   product: ProductType;
@@ -43,4 +43,4 @@ type OrderItemType = {
   size: string;
   quantity: number;
   _id: string;
-}
+};
