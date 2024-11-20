@@ -71,6 +71,7 @@ const config: Config = {
           fontWeight: "500",
         },
       ],
+<<<<<<< HEAD
       "small-bold": [
         "14px",
         {
@@ -98,3 +99,21 @@ const config: Config = {
 };
 export default config;
 
+=======
+    },
+    extend: {
+      colors: {
+        "white-1": "#F8F8F8",
+        "grey-1": "#616161",
+        "grey-2": "#E5E7EB",
+        "blue-1": "#005EBE",
+        "blue-2": "#E9F5FE",
+        "blue-3": "#F5F7F9",
+        "red-1": "#FF0000",
+      },
+    },
+  },
+  plugins: [],
+};
+export default config;
+>>>>>>> 2c1a2c848278c797693461797c9ba2650834301a

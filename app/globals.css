@@ -1,7 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 2c1a2c848278c797693461797c9ba2650834301a
 html,
 body,
 :root {
