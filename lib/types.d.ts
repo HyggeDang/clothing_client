@@ -29,7 +29,7 @@ type UserType = {
 };
 
 type OrderType = {
-  shippingAddress: Record<string, any>; // Thay đổi này cho phép linh hoạt hơn trong việc định nghĩa địa chỉ
+  shippingAddress: Record<string, any>;
   _id: string;
   customerClerkId: string;
   products: Array<OrderItemType>;

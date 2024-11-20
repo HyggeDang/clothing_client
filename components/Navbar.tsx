@@ -2,11 +2,14 @@
 
 import useCart from "@/lib/hooks/useCart";
 import { UserButton, useUser } from "@clerk/nextjs";
-import { CircleUserRound, Menu, Search, ShoppingCart } from "lucide-react";
+import { Camera, CircleUserRound, Menu, Search, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useLayoutEffect } from "react";
+import Modal from "react-modal";
+import ImageSearch from "./ImageSearch"; // Import component ImageSearch
+import ImageUpload from './ImageUpload';
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -16,6 +19,15 @@ const Navbar = () => {
 
   const [dropdownMenu, setDropdownMenu] = useState(false);
   const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false); // Sử dụng useState để quản lý trạng thái mở/đóng modal
+
+  // Sử dụng useLayoutEffect để gọi setAppElement sau khi DOM đã được render hoàn toàn
+  // Mở modal
+  const openModal = () => setIsModalOpen(true);
+
+  // Đóng modal
+  const closeModal = () => setIsModalOpen(false);
 
   const handleHomeClick = () => {
     window.location.href = "/"; // Reload trang khi nhấn Home
@@ -64,6 +76,21 @@ const Navbar = () => {
       </div>
 
       <div className="relative flex gap-3 items-center">
+        {/* Thêm icon Camera */}
+        <button
+          onClick={() => setIsModalOpen(true)} // Mở modal khi nhấn vào icon camera
+          className="cursor-pointer"
+        >
+          <Camera className="h-5 w-5 hover:text-red-1" />
+        </button>
+
+        {/* Modal cho ImageSearch */}
+        <Modal isOpen={isModalOpen} onRequestClose={closeModal}>
+          <h2>Tải ảnh lên để tìm kiếm sản phẩm</h2>
+          <ImageUpload /> {/* Hiển thị component ImageSearch trong modal */}
+          <button onClick={closeModal}>Đóng</button> {/* Nút đóng modal */}
+        </Modal>
+
         <Link
           href="/cart"
           className="flex items-center gap-3 border rounded-lg px-2 py-1 hover:bg-black hover:text-white max-md:hidden"
